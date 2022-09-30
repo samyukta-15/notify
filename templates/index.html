@@ -1,0 +1,20 @@
+<h1>Hello World</h1>
+
+<p>My name is {{fname}}</p>
+
+<p> {{filter_exec | safe}} </p>
+
+<p> {{filter_exec | striptags}} </p>
+
+<p> {{filter_exec | trim}} </p>
+
+<h3>Pizzas:</h3>
+{% for p in pizza %}
+	{% if p == 30 %}
+		{{p + 60}}  <br/>
+	{% else %}
+		{{p}}  <br/>
+	{% endif %} 
+{% endfor %} <br/>
+
+<p> My favourite pizza is {{pizza.2}} </p>

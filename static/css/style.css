@@ -1,5 +1,5 @@
 h1{
-	color: darkblue;
+	color: darkgreen;
 	font-size:60px;
 }
 
@@ -31,3 +31,26 @@ body{
   letter-spacing: 0.05rem;
   padding: 0.75rem 1rem;
 }
+
+.bg-card-404 { 
+  background:#fff;
+}
+
+.bg-image-404{
+ background-image: url("https://media.tenor.com/ykSFUGPQkxoAAAAS/recycle-waste.gif");
+ background-size: 500px;
+ background-repeat: no-repeat;
+ background-position: center;
+height: 500px;
+ }
+
+ .bg-image-500{
+ background-image: url("https://media.tenor.com/RV_KrHSUvb0AAAAS/%E0%B8%82%E0%B8%A2%E0%B8%B0-gdh.gif");
+ background-size: 500px;
+ background-repeat: no-repeat;
+ background-position: center;
+height: 500px;
+ }
+
+
+

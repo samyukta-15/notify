@@ -88,21 +88,22 @@ def dashboard():
 
 	return render_template('dashboard.html')
 
+@app.route('/admin')
+@login_required
+def admin():
+	id = current_user.id
+	our_users = Users.query.order_by(Users.date_added)
+	if id == 14:
+		return render_template("admin.html", our_users=our_users)
+	else:
+		flash("Sorry you need to be admin to access page")
+		return redirect(url_for('dashboard'))
+
 # pass variables to navbar (mainly csrf token)
 @app.context_processor
 def base():
 	form = SearchForm()
 	return dict(form=form)
-
-@app.route('/admin')
-@login_required
-def admin():
-	id = current_user.id
-	if id == 14:
-		return render_template("admin.html")
-	else:
-		flash("Sorry you need to be admin to access page")
-		return redirect(url_for('dashboard'))
 
 # create a search form
 class SearchForm(FlaskForm):
@@ -164,7 +165,7 @@ def add_post():
 		post = Posts(title=form.title.data, content= form.content.data, author= form.author.data, poster_id= poster, slug= form.slug.data)
 		form.title.data = ''
 		form.content.data = ''
-		form.author.data = ''
+		form.author.data = '' 
 		form.slug.data = ''
 
 		db.session.add(post)
@@ -193,7 +194,7 @@ def edit_post(id):
 
 		return redirect(url_for('post', id=post.id))
 
-	if current_user.id == post.poster_id:
+	if current_user.id == post.poster_id or current_user.id == 14:
 		# new post data
 		form.title.data = post.title
 		form.author.data = post.author
@@ -212,7 +213,7 @@ def edit_post(id):
 def delete_post(id):
 	post_to_delete = Posts.query.get_or_404(id)
 	id = current_user.id
-	if id == post_to_delete.poster.id:
+	if id == post_to_delete.poster.id or id == 14:
 
 		try:
 			db.session.delete(post_to_delete)
@@ -324,7 +325,7 @@ def update(id):
 @app.route('/delete/<int:id>')
 @login_required
 def delete(id):
-	if id == current_user.id:
+	if id == current_user.id or current_user.id == 14:
 		user_to_delete = Users.query.get_or_404(id)
 		name = None
 		form = UserForm()

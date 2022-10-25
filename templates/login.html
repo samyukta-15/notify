@@ -43,7 +43,10 @@
 	                </div> -->
 
 	                <div class="d-grid">
-	                  {{ form.submit(class='btn btn-lg btn-success btn-login text-uppercase fw-bold mb-2') }}
+	                  {{ form.submit(class='btn btn-lg btn-success btn-login text-uppercase fw-bold mb-2') }} <br>
+
+	                <div class= "help-block text-center"> <a href="{{ url_for('reset_request') }}" style="color: darkgreen">Forgot Password?</a>
+	                </div>
 
 	                  <!-- <div class="text-center">
 	                    <a class="small" href="#">Forgot password?</a>

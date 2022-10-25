@@ -52,5 +52,42 @@ height: 500px;
 height: 500px;
  }
 
+ .bg-image-home{
+ width: 100%;
+ background-repeat: no-repeat;
+ background-position: center;
+ margin-top: 5%;
+ }
 
+/* Features Section */
 
+#features {
+  position: relative;
+  text-align: center;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+}
+
+.feature-box {
+  padding: 4.5%;
+}
+
+.icon {
+  color: #B2D2A4;
+  margin-bottom: 1rem;
+}
+
+.icon:hover {
+  color: darkgreen;
+}
+
+#cta {
+  padding: 100px;
+  text-align: center;
+}
+
+.cta-column {
+  padding: 3% 2%;
+}

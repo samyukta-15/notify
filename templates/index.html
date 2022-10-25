@@ -1,25 +1,71 @@
 {% extends 'base.html' %}
 {% block content %}
 
-	<h1>Hello World</h1>
+<div class="shadow p-3 mb-5 bg-body rounded">
+    <div class="row">
+          <h2 align="center">"Our Waste is Our Responsibility!"</h2> 
 
-	<p>My name is {{fname}}</p>
+          <img class="bg-image-home" src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
+    </div>
+</div>
 
-	<p> {{filter_exec | safe}} </p>
+  <!-- Features -->
 
-	<p> {{filter_exec | striptags}} </p>
+<div class="shadow p-3 mb-5 bg-body rounded" id="features">
 
-	<p> {{filter_exec | trim}} </p>
+	<h2>Our Mission</h2>
 
-	<h3>Pizzas:</h3>
-	{% for p in pizza %}
-		{% if p == 30 %}
-			{{p + 60}}  <br/>
-		{% else %}
-			{{p}}  <br/>
-		{% endif %} 
-	{% endfor %} <br/>
+      <div class="row">
+        <div class="feature-box col-lg-4">
+          <i class="icon fas fa-check-circle fa-4x"></i>
+          <h3 class="feature-title">Connect to NGOs</h3> 
+          <p>To inform citizens about ongoing waste collection drives.</p>
+        </div>
 
-	<p> My favourite pizza is {{pizza.2}} </p>
+        <div class="feature-box col-lg-4">
+          <i class="icon fas fa-bullseye fa-4x"></i>
+          <h3 class="feature-title">Create awareness</h3>
+          <p>To propagate the importance of waste management.</p>
+        </div>
+
+        <div class="feature-box col-lg-4">
+          <i class="icon fas fa-heart fa-4x"></i>
+          <h3 class="feature-title">Protect the Environment</h3>
+          <p>To show our love towards the planet and do our part to help save it.</p>
+        </div>
+      </div>
+</div>
+
+ <!-- CTA -->
+
+<div class="shadow p-3 mb-5 bg-body rounded" id="cta">
+
+    <h2>Join the Movement</h2>
+
+    <div class="row">
+
+      <div class="cta-column col-lg-6 col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>New User?</h3>
+          </div>
+          <div class="card-body">
+            <a href = "{{url_for('add_user')}}" class= "btn btn-lg btn-block btn-outline-success">Sign Up</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-column col-lg-6 col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>Existing User?</h3>
+          </div>
+          <div class="card-body">
+            <a href = "{{url_for('login')}}" class= "btn btn-lg btn-block btn-outline-success">Login</a>
+          </div>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

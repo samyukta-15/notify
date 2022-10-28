@@ -10,8 +10,6 @@
 	</div>
 {% endfor %}
 
-
-<!-- START NEW -->
 <div class="container-fluid ps-md-0">
   <div class="row g-0">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
@@ -35,22 +33,12 @@
 						{{ form.password(class='form-control') }}
 						<br>
 
-	               <!--  <div class="form-check mb-3">
-	                  <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
-	                  <label class="form-check-label" for="rememberPasswordCheck">
-	                    Remember password
-	                  </label>
-	                </div> -->
-
 	                <div class="d-grid">
 	                  {{ form.submit(class='btn btn-lg btn-success btn-login text-uppercase fw-bold mb-2') }} <br>
 
 	                <div class= "help-block text-center"> <a href="{{ url_for('reset_request') }}" style="color: darkgreen">Forgot Password?</a>
 	                </div>
 
-	                  <!-- <div class="text-center">
-	                    <a class="small" href="#">Forgot password?</a>
-	                  </div> -->
 	                </div>
 
 	              </form>
@@ -65,26 +53,3 @@
   </div>
 </div>
 {% endblock %} 
-<!-- END NEW -->
-
-<!-- <h1> Login! </h1> <br>
-
-<div class="shadow p-3 mb-5 bg-body rounded">
-	<form method='POST'>
-		{{ form.hidden_tag()}}
-
-		{{ form.username.label(class='form-label') }}
-
-		{{ form.username(class='form-control') }}
-
-		<br>
-
-		{{ form.password.label(class='form-label') }}
-
-		{{ form.password(class='form-control') }}
-
-		<br>
-
-		{{ form.submit(class='btn btn-secondary') }}
-	</form>
-</div> -->

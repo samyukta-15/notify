@@ -8,7 +8,6 @@
 
 	<thead>
     <tr>
-      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Delete</th>
@@ -18,7 +17,6 @@
   <tbody>
 {% for our_user in our_users %}
 	<tr>
-		<td> {{ our_user.id }} </td>
 		<td> {{ our_user.name }} </td>
 		<td> {{ our_user.email }} </td>
 		<td> <a href="{{url_for('delete', id=our_user.id)}}"  class="btn btn-danger">Delete</a> </td>

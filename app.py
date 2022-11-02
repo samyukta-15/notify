@@ -339,6 +339,7 @@ class ResetRequestForm(FlaskForm):
 	email = StringField('Email', validators=[DataRequired()])
 	submit = SubmitField('Reset Password', validators=[DataRequired()])
 
+
 class ResetPasswordForm(FlaskForm):
 	password = PasswordField('Password', validators=[DataRequired()])
 	password2 = PasswordField('Confirm Password', validators=[DataRequired()])

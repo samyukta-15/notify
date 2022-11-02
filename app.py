@@ -15,7 +15,8 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:BombayTimes@localhost/users'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://xbygbrqeyqbxik:f54595446c44149b5d3f8b2c34ca52a3375b392b0e973a82b2ff75a26c1859df@ec2-35-170-21-76.compute-1.amazonaws.com:5432/dfguougghgv4su  '
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:BombayTimes@localhost/users'
 
 app.config['SECRET_KEY'] = "no one is supposed to know"
 

@@ -1,17 +1,13 @@
 from flask import Flask, render_template, flash, request, redirect, url_for
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField, ValidationError
-from wtforms.validators import DataRequired, EqualTo, Length
 from datetime import datetime, date
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
-from wtforms.widgets import TextArea
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
-from flask_ckeditor import CKEditor
-from flask_ckeditor import CKEditorField
 from itsdangerous import JSONWebSignatureSerializer as Serializer
 from flask_mail import Mail, Message
+from flask_ckeditor import CKEditor
+from webforms import LoginForm, SearchForm, PostForm, UserForm, ResetRequestForm, ResetPasswordForm
 
 app = Flask(__name__)
 
@@ -42,11 +38,6 @@ def load_user(user_id):
 @app.route('/')
 def index():
 	return render_template("index.html")
-
-class LoginForm(FlaskForm):
-	username = StringField("Username", validators=[DataRequired()])
-	password = PasswordField("Password", validators=[DataRequired()])
-	submit = SubmitField("Submit")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -112,10 +103,6 @@ def base():
 	form = SearchForm()
 	return dict(form=form)
 
-class SearchForm(FlaskForm):
-	searched = StringField("Searched", validators=[DataRequired()])
-	submit = SubmitField("Submit")
-
 @app.route('/search', methods=["POST"])
 def search():
 	form = SearchForm()
@@ -135,12 +122,6 @@ class Posts(db.Model):
 	author = db.Column(db.String(255))
 	date_posted = db.Column(db.DateTime, default=datetime.utcnow)
 	poster_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-class PostForm(FlaskForm):
-	title = StringField("Title", validators=[DataRequired()])
-	content = CKEditorField('Content',  validators=[DataRequired()])
-	author = StringField("Author")
-	submit = SubmitField("Submit")
 
 @app.route('/posts')
 def posts():
@@ -250,14 +231,6 @@ class Users(db.Model, UserMixin):
 with app.app_context():
 	db.create_all()
 
-class UserForm(FlaskForm):
-	name = StringField("Name", validators=[DataRequired()])
-	username = StringField("Username", validators=[DataRequired()])
-	email = StringField("Email", validators=[DataRequired()])
-	password_hash = PasswordField('Password', validators=[DataRequired(), EqualTo('password_hash2', message='Password must match')])
-	password_hash2 = PasswordField('Confirm Password', validators=[DataRequired()])
-	submit = SubmitField("Submit")
-
 @app.route('/user/add', methods=['GET', 'POST'])
 def add_user():
 	# name variable is being used in html file
@@ -335,16 +308,6 @@ def page_not_found(e):
 @app.errorhandler(500)
 def page_not_found(e):
 	return render_template("500.html"), 500
-
-class ResetRequestForm(FlaskForm):
-	email = StringField('Email', validators=[DataRequired()])
-	submit = SubmitField('Reset Password', validators=[DataRequired()])
-
-
-class ResetPasswordForm(FlaskForm):
-	password = PasswordField('Password', validators=[DataRequired()])
-	password2 = PasswordField('Confirm Password', validators=[DataRequired()])
-	submit = SubmitField('Submit', validators=[DataRequired()])
 
 def send_mail(user):
 	token= user.get_token()
